@@ -1,0 +1,2 @@
+This is a placeholder. A 16x16 pink/purple texture should be created here.
+For now, the mod will use Minecraft's missing texture pattern.

@@ -1,0 +1,12 @@
+dependencies {
+    // Architectury API
+    modImplementation "dev.architectury:architectury:${rootProject.architectury_version}"
+}
+
+architectury {
+    common(rootProject.enabled_platforms.split(","))
+}
+
+loom {
+    accessWidenerPath = project.file("src/main/resources/cellcraft.accesswidener")
+}

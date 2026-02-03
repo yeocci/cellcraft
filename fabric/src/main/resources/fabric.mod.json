@@ -1,0 +1,27 @@
+{
+  "schemaVersion": 1,
+  "id": "cellcraft",
+  "version": "${version}",
+  "name": "CellCraft",
+  "description": "A Minecraft mod for cellular automata and crafting",
+  "authors": ["yeocci"],
+  "contact": {
+    "homepage": "https://github.com/yeocci/cellcraft"
+  },
+  "license": "MIT",
+  "icon": "assets/cellcraft/icon.png",
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "com.yeocci.cellcraft.fabric.CellCraftFabric"
+    ]
+  },
+  "depends": {
+    "fabricloader": ">=0.15.0",
+    "fabric-api": "*",
+    "minecraft": "~1.20.1",
+    "java": ">=17",
+    "architectury": ">=9.2.14"
+  },
+  "accessWidener": "cellcraft.accesswidener"
+}

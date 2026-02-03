@@ -1,0 +1,46 @@
+dependencies {
+    modImplementation "net.fabricmc:fabric-loader:${rootProject.fabric_loader_version}"
+    modApi "net.fabricmc.fabric-api:fabric-api:${rootProject.fabric_api_version}"
+    
+    // Architectury API for Fabric
+    modImplementation "dev.architectury:architectury-fabric:${rootProject.architectury_version}"
+
+    implementation project(path: ":common", configuration: "namedElements")
+}
+
+architectury {
+    platformSetupLoomIde()
+    fabric()
+}
+
+loom {
+    accessWidenerPath = project(":common").loom.accessWidenerPath
+    
+    runs {
+        client {
+            client()
+            setConfigName("Fabric Client")
+        }
+        server {
+            server()
+            setConfigName("Fabric Server")
+        }
+    }
+}
+
+processResources {
+    inputs.property "version", project.version
+
+    filesMatching("fabric.mod.json") {
+        expand "version": project.version
+    }
+}
+
+publishing {
+    publications {
+        mavenFabric(MavenPublication) {
+            artifactId = rootProject.archives_base_name + "-fabric"
+            from components.java
+        }
+    }
+}
