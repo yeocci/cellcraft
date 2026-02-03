@@ -1,0 +1,34 @@
+plugins {
+    id 'fabric-loom' version '1.3.61'
+}
+
+dependencies {
+    minecraft "com.mojang:minecraft:${rootProject.minecraft_version}"
+    mappings loom.officialMojangMappings()
+    
+    modImplementation "net.fabricmc:fabric-loader:${rootProject.fabric_loader_version}"
+    modApi "net.fabricmc.fabric-api:fabric-api:${rootProject.fabric_api_version}"
+
+    implementation project(path: ":common", configuration: "namedElements")
+}
+
+loom {
+    accessWidenerPath = project(":common").file("src/main/resources/cellcraft.accesswidener")
+}
+
+processResources {
+    inputs.property "version", project.version
+
+    filesMatching("fabric.mod.json") {
+        expand "version": project.version
+    }
+}
+
+publishing {
+    publications {
+        mavenFabric(MavenPublication) {
+            artifactId = "cellcraft-fabric"
+            from components.java
+        }
+    }
+}

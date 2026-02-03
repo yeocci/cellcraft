@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "": {
+      "model": "cellcraft:block/cell_block"
+    }
+  }
+}

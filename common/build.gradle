@@ -1,0 +1,12 @@
+plugins {
+    id 'fabric-loom' version '1.3.61'
+}
+
+dependencies {
+    minecraft "com.mojang:minecraft:${rootProject.minecraft_version}"
+    mappings loom.officialMojangMappings()
+}
+
+loom {
+    accessWidenerPath = project.file("src/main/resources/cellcraft.accesswidener")
+}

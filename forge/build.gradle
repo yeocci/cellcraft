@@ -1,0 +1,38 @@
+plugins {
+    id 'dev.architectury.loom' version '1.6'
+}
+
+dependencies {
+    minecraft "com.mojang:minecraft:${rootProject.minecraft_version}"
+    mappings loom.officialMojangMappings()
+    
+    forge "net.minecraftforge:forge:${rootProject.minecraft_version}-${rootProject.forge_version}"
+
+    implementation project(path: ":common", configuration: "namedElements")
+}
+
+loom {
+    forge {
+        convertAccessWideners = true
+        extraAccessWideners.add "cellcraft.accesswidener"
+        
+        mixinConfig "cellcraft.mixins.json"
+    }
+}
+
+processResources {
+    inputs.property "version", project.version
+
+    filesMatching("META-INF/mods.toml") {
+        expand "version": project.version
+    }
+}
+
+publishing {
+    publications {
+        mavenForge(MavenPublication) {
+            artifactId = "cellcraft-forge"
+            from components.java
+        }
+    }
+}
