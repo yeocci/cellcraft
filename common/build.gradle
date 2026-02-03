@@ -1,10 +1,10 @@
-dependencies {
-    // Architectury API
-    modImplementation "dev.architectury:architectury:${rootProject.architectury_version}"
+plugins {
+    id 'dev.architectury.loom' version '1.6'
 }
 
-architectury {
-    common(rootProject.enabled_platforms.split(","))
+dependencies {
+    minecraft "com.mojang:minecraft:${rootProject.minecraft_version}"
+    mappings loom.officialMojangMappings()
 }
 
 loom {

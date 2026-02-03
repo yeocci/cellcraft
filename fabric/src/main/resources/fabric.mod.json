@@ -20,8 +20,7 @@
     "fabricloader": ">=0.15.0",
     "fabric-api": "*",
     "minecraft": "~1.20.1",
-    "java": ">=17",
-    "architectury": ">=9.2.14"
+    "java": ">=17"
   },
   "accessWidener": "cellcraft.accesswidener"
 }
